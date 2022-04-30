@@ -21,7 +21,7 @@ from netzob.Import.PCAPImporter.all import *
 from netzob.Model.Vocabulary.Session import Session
 
 class Processing:
-    MAX_LEN = 500 #100 // reduce the time for MSA
+    MAX_LEN = 1000 #100 // reduce the time for MSA
 
     def __init__(self, filepath, protocol_type=None, layer=5, messages=None):
         self.filepath = filepath
@@ -62,14 +62,14 @@ class Processing:
                 # delete not smb msgs
                 if message.data[4:8].hex() != "ff534d42":
                     messages.remove(message)
-                if len(message.data) > 500:
-                    message.data = message.data[:500]
+                if len(message.data) > 1000:
+                    message.data = message.data[:1000]
         elif self.protocol_type == 'smb2':
             for message in messages[::-1]:
                 if message.data[4:8].hex() != "fe534d42":
                     messages.remove(message)
-                if len(message.data) > 500:
-                    message.data = message.data[:500]
+                if len(message.data) > 1000:
+                    message.data = message.data[:1000]
         elif self.protocol_type == 'zeroaccess':
             for message in messages:
                 message.data = self.decrypt_za_msg(message.data)
