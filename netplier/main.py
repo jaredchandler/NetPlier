@@ -55,9 +55,9 @@ if __name__ == '__main__':
     messages_request_aligned, messages_response_aligned = Processing.divide_msgs_by_directionlist(messages_aligned, netplier.direction_list)
 
     clustering = Clustering(fields=netplier.fields, protocol_type=args.protocol_type)
-    clustering_result_request_true = clustering.cluster_by_kw_true(messages_request)
-    clustering_result_response_true = clustering.cluster_by_kw_true(messages_response)
+    #clustering_result_request_true = clustering.cluster_by_kw_true(messages_request)
+    #clustering_result_response_true = clustering.cluster_by_kw_true(messages_response)
     clustering_result_request_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_request_aligned)
     clustering_result_response_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_response_aligned)
-    clustering.evaluation([clustering_result_request_true, clustering_result_response_true], [clustering_result_request_netplier, clustering_result_response_netplier])
+    #clustering.evaluation([clustering_result_request_true, clustering_result_response_true], [clustering_result_request_netplier, clustering_result_response_netplier])
     
