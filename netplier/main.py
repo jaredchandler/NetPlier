@@ -18,8 +18,8 @@ import argparse
 import sys
 import os
 import logging
-logging.basicConfig(level=logging.INFO, stream=sys.stdout)
-#logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+#logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
 
 from netplier import NetPlier
 from processing import Processing
@@ -46,7 +46,9 @@ if __name__ == '__main__':
     mode = args.mafft_mode
     if args.protocol_type in['dnp3']: # tftp
         mode = 'linsi'
-    netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread)
+    dl = [0 for i in p.direction_list]+[1 for i in p.direction_list]
+    msgs = p.messages+p.messages
+    netplier = NetPlier(messages=msgs, direction_list=dl, output_dir=args.output_dir, mode=mode, multithread=args.multithread)
     fid_inferred = netplier.execute()
     
     # Clustering
