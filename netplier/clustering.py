@@ -117,8 +117,9 @@ class Clustering:
             for i in range(fid_inferred):
                 il += self.fields[i].domain.dataType.size[1] // 8
             ir = il + (self.fields[fid_inferred].domain.dataType.size[1] // 8)
-
+            print("Cluster Res")
             for j in range(len(messages)):
+                print(j,il,ir,messages[j].data[il:ir],messages[j].data)
                 results[j].append(messages[j].data[il:ir])
         results = [''.join(result) for result in results]
 
