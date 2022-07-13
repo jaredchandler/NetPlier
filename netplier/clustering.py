@@ -119,7 +119,7 @@ class Clustering:
             ir = il + (self.fields[fid_inferred].domain.dataType.size[1] // 8)
             print("BEGIN CLUSTERS")
             for j in range(len(messages)):
-                print("CLUSTERRESULT","\t",cluster_id,"\t",messages[j].data[il:ir],"\t",messages[j].data)
+                print("CLUSTERRESULT","\t",messages[j].data[il:ir],"\t",messages[j].data[il:ir],"\t",messages[j].data)
                 #print(j,il,ir,messages[j].data[il:ir],messages[j].data)
                 results[j].append(messages[j].data[il:ir])
             print("END CLUSTERS")
