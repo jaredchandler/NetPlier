@@ -121,5 +121,7 @@ class Clustering:
             for j in range(len(messages)):
                 results[j].append(messages[j].data[il:ir])
         results = [''.join(result) for result in results]
-
+        print("results")
+        for r in results:
+            print("\t"+r)
         return results
