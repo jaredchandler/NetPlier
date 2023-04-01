@@ -19,7 +19,7 @@ import copy
 import struct
 from netzob.Import.PCAPImporter.all import *
 from netzob.Model.Vocabulary.Session import Session
-
+from sklearn import metrics
 class Processing:
     MAX_LEN = 1500 #100 // reduce the time for MSA
 
@@ -265,6 +265,22 @@ class Processing:
         print("\nNumber of Sessions: {0}".format(num_of_session))
         print("[++++++++] End\n")
 
+     def dump(self, messages):
+        import struct
+        kws = []
+        ds = []
+        for message in messages:
+            kw = self.get_true_keyword(message)
+            if type(kw) == type(1):
+                kw = struct.pack(">I",kw).hex()
+            d = self.get_msg_direction_by_specification(message)
+            kws.append(kw)
+            ds.append(d)
+            print("msg","dir",d,"kw",kw,"data",message.data.hex())
+        nmi = metrics.normalized_mutual_info_score(kws,ds)
+        print("NMI",nmi)
+
+        
     @staticmethod
     def divide_msgs_by_directionlist(messages, direction_list):
         messages_request = list()
