@@ -23,12 +23,13 @@ from sklearn import metrics
 class Processing:
     MAX_LEN = 1500 #100 // reduce the time for MSA
 
-    def __init__(self, filepath, protocol_type=None, layer=5, messages=None):
+    def __init__(self, filepath, protocol_type=None, layer=5, messages=None, randomdir=False):
         self.filepath = filepath
         self.protocol_type = protocol_type
         self.layer = layer
         self.messages = messages
         self.direction_list = list()
+        self.randomdir = randomdir
 
         if self.protocol_type:
             assert self.protocol_type in ['dhcp', 'dnp3', 'icmp', 'modbus', 'ntp', 'smb', 'smb2', 'tftp', 'zeroaccess'], 'the protocol_type is unknown'
