@@ -122,6 +122,6 @@ class Clustering:
                 results[j].append(messages[j].data[il:ir])
         results = [''.join(result) for result in results]
         print("results")
-        for r in results:
-            print("\t"+r)
+        for i,r in enumerate(results):
+            print("\t"+r,messages[i].data.replace("-","").replace("~",""))
         return results
