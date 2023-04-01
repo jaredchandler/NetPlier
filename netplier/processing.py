@@ -144,6 +144,9 @@ class Processing:
     def get_msg_direction_by_specification(self, message):
         ##0: request; 1: response
         result = -1
+        import random
+        if self.randomdir:
+            return random.choice([0,1])
 
         if self.protocol_type == "dhcp":
             #DHCP: original msgs data[0]; aligned msg (hex) data[1]
