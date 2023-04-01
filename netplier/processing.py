@@ -265,7 +265,7 @@ class Processing:
         print("\nNumber of Sessions: {0}".format(num_of_session))
         print("[++++++++] End\n")
 
-     def dump(self, messages):
+    def dump(self, messages):
         import struct
         kws = []
         ds = []
