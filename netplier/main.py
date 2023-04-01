@@ -37,6 +37,7 @@ if __name__ == '__main__':
     parser.add_argument('-l', '--layer', dest='layer', default=5, type=int, help='the layer of the protocol')
     parser.add_argument('-m', '--mafft', dest='mafft_mode', default='ginsi', help='the mode of mafft: [ginsi, linsi, einsi]')
     parser.add_argument('-mt', '--multithread', dest='multithread', default=False, action='store_true', help='run mafft with multi threads')
+    parser.add_argument('-rd', '--randomdir', dest='randomdir', default=False, action='store_true', help='randomize direction')
 
     args = parser.parse_args()
 
