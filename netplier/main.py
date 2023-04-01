@@ -62,5 +62,8 @@ if __name__ == '__main__':
     clustering_result_request_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_request_aligned)
     print("results response")
     clustering_result_response_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_response_aligned)
+    print("results both")
+    clustering_result_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_aligned)
     clustering.evaluation([clustering_result_request_true, clustering_result_response_true], [clustering_result_request_netplier, clustering_result_response_netplier])
     
+
