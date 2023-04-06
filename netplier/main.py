@@ -49,8 +49,11 @@ if __name__ == '__main__':
         mode = 'linsi'
     netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread)
     fid_inferred = netplier.execute()
-    print("fid_inferred",fid_inferred)
-    
+    if len(fid_inferred) > 0:
+        print("fid_inferred",fid_inferred)
+    else:
+        print("fid_inferred","No Field Inferred")
+        quit()
     # Clustering
     messages_aligned = Alignment.get_messages_aligned(netplier.messages, os.path.join(netplier.output_dir, Alignment.FILENAME_OUTPUT_ONELINE))
     messages_request, messages_response = Processing.divide_msgs_by_directionlist(netplier.messages, netplier.direction_list)
