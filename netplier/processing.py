@@ -277,6 +277,7 @@ class Processing:
         ds = []
         
         dirs = self.get_msgs_directionlist_by_sessions()
+        dirs = [int(not d) for d in dirs]
         for i,message in enumerate(messages):
             kw = self.get_true_keyword(message)
             if type(kw) == type(1):
