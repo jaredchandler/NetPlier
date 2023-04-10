@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    p = Processing(filepath=args.filepath_input, protocol_type=args.protocol_type, layer=args.layer, randomdir=args.randomdir)
+    p = Processing(filepath=args.filepath_input, protocol_type=args.protocol_type, layer=args.layer, randomdir=args.randomdir, sessiondir=args.sessiondir)
     # p.print_dataset_info()
     
     mode = args.mafft_mode
