@@ -274,14 +274,16 @@ class Processing:
         import struct
         kws = []
         ds = []
-        for message in messages:
+        
+        dirs = self.get_msgs_directionlist_by_sessions()
+        for i,message in enumerate(messages):
             kw = self.get_true_keyword(message)
             if type(kw) == type(1):
                 kw = struct.pack(">I",kw).hex()
             d = self.get_msg_direction_by_specification(message)
             kws.append(kw)
             ds.append(d)
-            print("msg","dir",d,"kw",kw,"data",message.data.hex())
+            print("msg","sdir",dirs[i],"dir",d,"kw",kw,"data",message.data.hex())
         nmi = metrics.normalized_mutual_info_score(kws,ds)
         print("NMI",nmi)
 
