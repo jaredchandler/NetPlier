@@ -23,13 +23,14 @@ from sklearn import metrics
 class Processing:
     MAX_LEN = 1500 #100 // reduce the time for MSA
 
-    def __init__(self, filepath, protocol_type=None, layer=5, messages=None, randomdir=False):
+    def __init__(self, filepath, protocol_type=None, layer=5, messages=None, randomdir=False, sessiondir=False):
         self.filepath = filepath
         self.protocol_type = protocol_type
         self.layer = layer
         self.messages = messages
         self.direction_list = list()
         self.randomdir = randomdir
+        self.sessiondir = sessiondir
 
         if self.protocol_type:
             assert self.protocol_type in ['dhcp', 'dnp3', 'icmp', 'modbus', 'ntp', 'smb', 'smb2', 'tftp', 'zeroaccess'], 'the protocol_type is unknown'
@@ -105,7 +106,7 @@ class Processing:
     def get_msgs_directionlist(self):
         assert self.messages is not None, 'the messages could not be None'
 
-        if not self.protocol_type or self.protocol_type == "tftp":
+        if not self.protocol_type or self.protocol_type == "tftp" or self.sessiondir:
             direction_list = self.get_msgs_directionlist_by_sessions()
         else: ## get the direction by specification
             direction_list = list()
