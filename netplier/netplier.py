@@ -28,12 +28,13 @@ from constraint.constraint import Constraint
 from probabilistic_inference import ProbabilisticInference
 
 class NetPlier:
-    def __init__(self, messages, direction_list=None, output_dir='tmp/', mode='ginsi', multithread=False):
+    def __init__(self, messages, direction_list=None, output_dir='tmp/', mode='ginsi', multithread=False,single=False):
         self.messages = messages
         self.direction_list = direction_list
         self.output_dir = output_dir
         self.mode = mode
         self.multithread = multithread
+        self.single = single
 
         if not os.path.exists(self.output_dir):
             logging.debug("Folder {0} doesn't exist".format(self.output_dir))
