@@ -49,7 +49,7 @@ if __name__ == '__main__':
     mode = args.mafft_mode
     if args.protocol_type in['dnp3']: # tftp
         mode = 'linsi'
-    netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread)
+    netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread,single=args.single)
     fid_inferred = netplier.execute()
     if len(fid_inferred) > 0:
         print("fid_inferred",fid_inferred)
