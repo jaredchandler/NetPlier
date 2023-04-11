@@ -39,6 +39,7 @@ if __name__ == '__main__':
     parser.add_argument('-mt', '--multithread', dest='multithread', default=False, action='store_true', help='run mafft with multi threads')
     parser.add_argument('-rd', '--randomdir', dest='randomdir', default=False, action='store_true', help='randomize direction')
     parser.add_argument('-sd', '--sessiondir', dest='sessiondir', default=False, action='store_true', help='use sessions for direction')
+    parser.add_argument('-single', '--single', dest='single', default=False, action='store_true', help='unidirectional calculation')
 
     args = parser.parse_args()
 
