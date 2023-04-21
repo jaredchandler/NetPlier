@@ -163,11 +163,16 @@ class Constraint:
                 for p_list in pairs_p[fid_pair]:
                     for p in p_list[:-1]:
                         fout.write("{},".format(p))
-                    fout.write("{} ".format(p_list[-1]))
-
+                    try:
+                        fout.write("{} ".format(p_list[-1]))
+                    except;
+                        pass
                 for n in pairs_size[fid_pair][:-1]:
                     fout.write("{},".format(n))
-                fout.write("{} ".format(pairs_size[fid_pair][-1]))
+                try:
+                    fout.write("{} ".format(pairs_size[fid_pair][-1]))
+                except:
+                    pass
                 fout.write("\n")
 
     # read probabilities from file
