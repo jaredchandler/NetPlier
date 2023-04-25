@@ -20,9 +20,10 @@ from pgmpy.inference import BeliefPropagation
 
 class MyFactorGraph:
 
-    def __init__(self, p_observation, p_implication):
+    def __init__(self, p_observation, p_implication, remote=True):
         self.p_observation = p_observation
         self.p_implication = p_implication
+        self.remote = remote
 
     # Compute Pk
     # type_list: 0: k2x & x2k, 1: k2x, 2: x2k, -1: not test
@@ -41,6 +42,9 @@ class MyFactorGraph:
         fg.add_node('k')
 
         for i in range(len(type_list)):
+            if not self.remote and constraint_name[i] == 'r':
+                continue
+            
             if type_list[i] == 0:
                 fg = self.add_constraints_k2x_x2k(fg, self.p_observation[fid][i], self.p_implication[fid][0][i], self.p_implication[fid][1][i], constraint_name[i])
             elif type_list[i] == 1:
