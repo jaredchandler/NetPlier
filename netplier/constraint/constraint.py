@@ -165,7 +165,7 @@ class Constraint:
                         fout.write("{},".format(p))
                     try:
                         fout.write("{} ".format(p_list[-1]))
-                    except;
+                    except:
                         pass
                 for n in pairs_size[fid_pair][:-1]:
                     fout.write("{},".format(n))
