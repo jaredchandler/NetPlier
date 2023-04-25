@@ -30,9 +30,10 @@ class ProbabilisticInference:
 
     BONUS_VALUE_X2K = 0.2
 
-    def __init__(self, pairs_p, pairs_size):
+    def __init__(self, pairs_p, pairs_size,remote=True):
         self.pairs_p = pairs_p # observation prob
         self.pairs_size = pairs_size
+        self.remote = remote
 
     # inference
     def execute(self, fid_list = None):
@@ -78,7 +79,7 @@ class ProbabilisticInference:
         fg_result = dict()
         for fid in fid_list:
             pk_list = list() 
-            fg = MyFactorGraph(p_observation=p_observation, p_implication=self.p_implication)
+            fg = MyFactorGraph(p_observation=p_observation, p_implication=self.p_implication,remote=self.remote)
             # can test different constraints together
             # test type (m/r/s/d/v): 0: k2x & x2k, 1: k2x, 2: x2k, -1: not test
             pk_list.append(fg.compute_pk([0,0,0,0,0], fid)) #kv:mrsdv, vk: mrsdv
