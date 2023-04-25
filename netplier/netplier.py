@@ -35,6 +35,7 @@ class NetPlier:
         self.mode = mode
         self.multithread = multithread
         self.single = single
+        self.remote = remote
 
         if not os.path.exists(self.output_dir):
             logging.debug("Folder {0} doesn't exist".format(self.output_dir))
