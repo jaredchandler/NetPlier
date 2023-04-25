@@ -72,7 +72,7 @@ class NetPlier:
         pairs_p_all, pairs_size_all = self.merge_constraint_results(pairs_p_request, pairs_p_response, pairs_size_request, pairs_size_response)
 
         ffid_list = ["{0}-{0}".format(fid) for fid in fid_list] #only test same fid for both sides
-        pi = ProbabilisticInference(pairs_p=pairs_p_request, pairs_size=pairs_size_request)
+        pi = ProbabilisticInference(pairs_p=pairs_p_request, pairs_size=pairs_size_request,remote=self.remote)
         fid_inferred = pi.execute(ffid_list)
         
         ## TODO: iterative
