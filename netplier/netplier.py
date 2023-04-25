@@ -28,7 +28,7 @@ from constraint.constraint import Constraint
 from probabilistic_inference import ProbabilisticInference
 
 class NetPlier:
-    def __init__(self, messages, direction_list=None, output_dir='tmp/', mode='ginsi', multithread=False,single=False):
+    def __init__(self, messages, direction_list=None, output_dir='tmp/', mode='ginsi', multithread=False,single=False,remote=True):
         self.messages = messages
         self.direction_list = direction_list
         self.output_dir = output_dir
