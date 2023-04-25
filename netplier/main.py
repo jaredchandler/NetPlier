@@ -40,6 +40,7 @@ if __name__ == '__main__':
     parser.add_argument('-rd', '--randomdir', dest='randomdir', default=False, action='store_true', help='randomize direction')
     parser.add_argument('-sd', '--sessiondir', dest='sessiondir', default=False, action='store_true', help='use sessions for direction')
     parser.add_argument('-single', '--single', dest='single', default=False, action='store_true', help='unidirectional calculation')
+    parser.add_argument('-remote', '--remote', dest='remote', default=True, action='store_true', help='do remote coupling')
 
     args = parser.parse_args()
 
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     mode = args.mafft_mode
     if args.protocol_type in['dnp3']: # tftp
         mode = 'linsi'
-    netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread,single=args.single)
+    netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread,single=args.single,remote=args.remote)
     fid_inferred = netplier.execute()
     if len(fid_inferred) > 0:
         print("fid_inferred",fid_inferred)
