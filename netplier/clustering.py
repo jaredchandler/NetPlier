@@ -18,6 +18,7 @@ import numpy as np
 from sklearn import metrics
 import logging
 import struct
+from getkw import get_true_keyword as gtk
 
 class Clustering:
     def __init__(self, fields, protocol_type):
@@ -81,6 +82,7 @@ class Clustering:
         return results
 
     def get_true_keyword(self, message):
+        return gtk(self.protocol_type,message)
         if self.protocol_type == "dhcp":
             kw = message.data[242:243]
         elif self.protocol_type == "dnp3":
