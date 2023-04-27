@@ -20,6 +20,8 @@ import struct
 from netzob.Import.PCAPImporter.all import *
 from netzob.Model.Vocabulary.Session import Session
 from sklearn import metrics
+from getkw import get_true_keyword as gtk
+
 class Processing:
     MAX_LEN = 1500 #100 // reduce the time for MSA
 
@@ -304,6 +306,7 @@ class Processing:
 
     # get the true keyword defined by the specification
     def get_true_keyword(self, message):
+        return gtk(self.protocol_type,message)
         if self.protocol_type == "dhcp":
             kw = message.data[242:243]
         elif self.protocol_type == "dnp3":
