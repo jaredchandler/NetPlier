@@ -26,6 +26,7 @@ from processing import Processing
 from alignment import Alignment
 from clustering import Clustering
 
+
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
@@ -40,7 +41,8 @@ if __name__ == '__main__':
     parser.add_argument('-rd', '--randomdir', dest='randomdir', default=False, action='store_true', help='randomize direction')
     parser.add_argument('-sd', '--sessiondir', dest='sessiondir', default=False, action='store_true', help='use sessions for direction')
     parser.add_argument('-single', '--single', dest='single', default=False, action='store_true', help='unidirectional calculation')
-    parser.add_argument('-remote', '--remote', dest='remote', default=True, action='store_true', help='do remote coupling')
+    parser.add_argument('-remote', '--remote', dest='remote', default=True, action='store_false', help='do remote coupling')
+    parser.add_argument('-origgt', '--origgt', dest='origgt', default=False, action='store_true', help='do remote coupling')
 
     args = parser.parse_args()
 
