@@ -42,12 +42,26 @@ if __name__ == '__main__':
     parser.add_argument('-sd', '--sessiondir', dest='sessiondir', default=False, action='store_true', help='use sessions for direction')
     parser.add_argument('-single', '--single', dest='single', default=False, action='store_true', help='unidirectional calculation')
     parser.add_argument('-remote', '--remote', dest='remote', default=True, action='store_false', help='do remote coupling')
-    parser.add_argument('-origgt', '--origgt', dest='origgt', default=False, action='store_true', help='do remote coupling')
+    parser.add_argument('-origgt', '--origgt', dest='origgt', default=False, action='store_true', help='use the original Netplier KW indexes')
+    parser.add_argument('-double', '--double', dest='doube', default=False, action='store_true', help='double messages and balance dirs')
 
     args = parser.parse_args()
 
     p = Processing(filepath=args.filepath_input, protocol_type=args.protocol_type, layer=args.layer, randomdir=args.randomdir, sessiondir=args.sessiondir)
     # p.print_dataset_info()
+    
+    if args.double:
+        msglen = len(p.messages)
+        newmsgs = p.messages + p.messages
+        newdirs = [1 for i in range(msglen)] + [0 for i in range(msglen)]
+        
+        p.messages = newmsgs
+        p.direction_list = newdirs
+        
+    if args.randomdir:
+        import random
+        random.shuffle(p.direction_list)
+    
     
     mode = args.mafft_mode
     if args.protocol_type in['dnp3']: # tftp
