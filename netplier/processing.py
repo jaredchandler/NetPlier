@@ -20,7 +20,7 @@ import struct
 from netzob.Import.PCAPImporter.all import *
 from netzob.Model.Vocabulary.Session import Session
 from sklearn import metrics
-from getkw import get_true_keyword as gtk
+from getkw import get_true_keyword_updated as gtk
 
 class Processing:
     MAX_LEN = 1500 #100 // reduce the time for MSA
