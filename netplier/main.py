@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('-single', '--single', dest='single', default=False, action='store_true', help='unidirectional calculation')
     parser.add_argument('-remote', '--remote', dest='remote', default=True, action='store_false', help='do remote coupling')
     parser.add_argument('-origgt', '--origgt', dest='origgt', default=False, action='store_true', help='use the original Netplier KW indexes')
-    parser.add_argument('-double', '--double', dest='doube', default=False, action='store_true', help='double messages and balance dirs')
+    parser.add_argument('-double', '--double', dest='double', default=False, action='store_true', help='double messages and balance dirs')
 
     args = parser.parse_args()
 
