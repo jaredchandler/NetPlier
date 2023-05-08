@@ -51,10 +51,20 @@ if __name__ == '__main__':
     # p.print_dataset_info()
     
     if args.double:
-        msglen = len(p.messages)
-        newmsgs = p.messages + p.messages
-        newdirs = [1 for i in range(msglen)] + [0 for i in range(msglen)]
+
+        newmsgs =[]
+        newdirs = []
+
+        for m in p.messages:
+          newmsgs.append(m)
+          newdirs.append(0)
+          newmsgs.append(m)
+          newdirs.append(1)
+        # msglen = len(p.messages)
+        # newmsgs = p.messages + p.messages
+        # newdirs = [1 for i in range(msglen)] + [0 for i in range(msglen)]
         
+
         p.messages = newmsgs
         p.direction_list = newdirs
         
