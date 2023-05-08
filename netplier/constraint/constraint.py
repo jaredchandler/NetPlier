@@ -282,12 +282,15 @@ class Constraint:
             #-3: too many symbols (>60%)
             # TODO
             f_values = [message.data[il:ir] for message in messages]
-            percentage = len(messages) / len(set(f_values))
-            if percentage < 1.5 or len(set(f_values)) > 50: # TODO: save time, but may cause error in small data set (modbus_100)
-                logging.debug("There are too many symbols")
-                continue
+            try:
+                percentage = len(messages) / len(set(f_values))
+                if percentage < 1.5 or len(set(f_values)) > 50: # TODO: save time, but may cause error in small data set (modbus_100)
+                    logging.debug("There are too many symbols")
+                    continue
 
-            fid_list_new.append(fid)
+                fid_list_new.append(fid)
+            except:
+                continue
 
         #print(len(fid_list_new), fid_list_new)
         return fid_list_new
