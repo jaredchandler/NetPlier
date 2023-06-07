@@ -84,8 +84,10 @@ class Processing:
                 message.data = message.data[:Processing.MAX_LEN]
 
         self.messages = messages
-        self.dump(self.messages)
-
+        try:
+            self.dump(self.messages)
+        except:
+            pass
     def decrypt_za_msg(self, messagedata_encrypted):
         crc32 = struct.unpack("<I", messagedata_encrypted[0:4])[0]
         if crc32 == 0:
