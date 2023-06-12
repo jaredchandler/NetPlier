@@ -25,7 +25,7 @@ from getkw import get_true_keyword_updated as gtk
 class Processing:
     MAX_LEN = 1500 #100 // reduce the time for MSA
 
-    def __init__(self, filepath, protocol_type=None, layer=5, messages=None, randomdir=False, sessiondir=False):
+    def __init__(self, filepath, protocol_type=None, layer=5, messages=None, randomdir=False, sessiondir=False, getdir=''):
         self.filepath = filepath
         self.protocol_type = protocol_type
         self.layer = layer
@@ -33,6 +33,7 @@ class Processing:
         self.direction_list = list()
         self.randomdir = randomdir
         self.sessiondir = sessiondir
+        self.getdir = getdir
 
         if self.protocol_type:
             assert self.protocol_type in ['dhcp', 'dnp3', 'icmp', 'modbus', 'ntp', 'smb', 'smb2', 'tftp', 'zeroaccess'], 'the protocol_type is unknown'
