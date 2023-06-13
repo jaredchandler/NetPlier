@@ -65,7 +65,7 @@ if __name__ == '__main__':
     if args.protocol_type in['dnp3']: # tftp
         mode = 'linsi'
 
-    p.direction_list = [1 for v in p.direction_list]
+    p.direction_list = [0 for v in p.direction_list]
     if args.getdir != '':
         def file2dirs(filename):
             f = open(filename)
@@ -73,7 +73,10 @@ if __name__ == '__main__':
             f.close()
             dirs = [int(line.split("\t")[1]) for line in data]
             return dirs
-        p.direction_list = file2dirs(args.getdir)
+        try:
+            p.direction_list = file2dirs(args.getdir)
+        except:
+            pass
     netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread,single=args.single)
     
     
