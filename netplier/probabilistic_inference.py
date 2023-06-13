@@ -93,13 +93,15 @@ class ProbabilisticInference:
             fg_result[fid] = pk_list
 
         logging.debug("\n[++++] Final Result")
-        pk_list_size = len(list(fg_result.values())[0]) # num of different test
-        for i in range(pk_list_size):
-            result = dict()
-            for fid in fg_result:
-                result[fid] = fg_result[fid][i]
-            logging.debug(sorted(result.items(), key=lambda x:x[1], reverse=True))
-
+        try:
+            pk_list_size = len(list(fg_result.values())[0]) # num of different test
+            for i in range(pk_list_size):
+                result = dict()
+                for fid in fg_result:
+                    result[fid] = fg_result[fid][i]
+                logging.debug(sorted(result.items(), key=lambda x:x[1], reverse=True))
+        except:
+            pass
         return self.get_fid_inferred(fg_result)
 
     def print_p_lists(self, fid_list, p_observation, p_implication = None):
