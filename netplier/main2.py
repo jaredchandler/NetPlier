@@ -40,6 +40,7 @@ if __name__ == '__main__':
     parser.add_argument('-rd', '--randomdir', dest='randomdir', default=False, action='store_true', help='randomize direction')
     parser.add_argument('-sd', '--sessiondir', dest='sessiondir', default=False, action='store_true', help='use sessions for direction')
     parser.add_argument('-single', '--single', dest='single', default=False, action='store_true', help='unidirectional calculation')
+    parser.add_argument('-remote', '--remote', dest='remote', default=True, action='store_false', help='unidirectional calculation')
     parser.add_argument('-getdir', '--getdir', dest='getdir', default='', help='Get directions from this file')
 
     args = parser.parse_args()
