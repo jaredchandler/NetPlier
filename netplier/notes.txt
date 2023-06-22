@@ -1,0 +1,6 @@
+main2.py use session dirs
+main3.py random dir
+main4.py double up
+
+-mt multiprocesser 
+-single cut out direction in probabilistic inference
