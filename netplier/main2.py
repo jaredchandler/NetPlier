@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
 
 
-    p = Processing(filepath=args.filepath_input, protocol_type=args.protocol_type, layer=args.layer, randomdir=args.randomdir, sessiondir=args.sessiondir, getdir=args.getdir)
+    p = Processing(filepath=args.filepath_input, protocol_type=args.protocol_type, layer=args.layer, randomdir=args.randomdir, sessiondir=args.sessiondir, getdir=args.getdir, remote=args.remote)
     # p.print_dataset_info()
     
     # We now have direction data.
