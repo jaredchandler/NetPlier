@@ -85,6 +85,8 @@ if __name__ == '__main__':
       dirs+=[1,0]
     p.messages = new_msgs
     p.direction_list = dirs
+
+    # Double up messages going in both directions
     netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread,single=args.single)
     
     
