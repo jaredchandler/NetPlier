@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
 
 
-    p = Processing(filepath=args.filepath_input, protocol_type=args.protocol_type, layer=args.layer, randomdir=args.randomdir, sessiondir=args.sessiondir, getdir=args.getdir, remote=args.remote)
+    p = Processing(filepath=args.filepath_input, protocol_type=args.protocol_type, layer=args.layer, randomdir=args.randomdir, sessiondir=args.sessiondir, getdir=args.getdir)
     # p.print_dataset_info()
     
     # We now have direction data.
@@ -78,7 +78,7 @@ if __name__ == '__main__':
             p.direction_list = file2dirs(args.getdir)
         except:
             pass
-    netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread,single=args.single)
+    netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread,single=args.single,remote=args.remote)
     
     
     fid_inferred = netplier.execute()
